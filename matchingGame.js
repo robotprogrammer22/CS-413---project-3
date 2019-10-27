@@ -4,7 +4,7 @@ class matchingGame
 	{
 		this.matching_container = new PIXI.Container();
 		this.existing_stage = container;
-		this.existing_stage.addChild(this.matching_container);
+		//this.existing_stage.addChild(this.matching_container);
 		
 		this.game_finished = false;
 		this.score = 5;
@@ -17,6 +17,13 @@ class matchingGame
 	startGame()
 	{
 		//setBoard();
+		/*
+		// do this in the animate loop
+		while (this.remaining_cards > 0)
+		{
+			playGame();
+		}
+		*/
 		//playGame();
 		return this.score;
 	}
@@ -24,6 +31,8 @@ class matchingGame
 	playGame()
 	{
 		// will contain logic for the matching game
+		// set this to a variable and loop until it's done? or just put a loop in startGame()?
+		// check user input until it's done, will need to end that so we're not using up computer resources
 		
 		if (this.flipped_cards === 2)
 		{
@@ -73,11 +82,31 @@ class matchingGame
 			}
 		}
 		
+		this.cards[0].position.x = 20;
+		this.cards[0].position.y = 20;
+		
+		this.cards[1].position.x = 200;
+		this.cards[1].position.y = 200;
+		
 		// need 6 total cards
 		// need to check that 2 of each card exist, so use random to choose between 1-3 to randomly select the card type
 		// if that card type already has 2, then run again
 		// need to place the cards in the proper position here too
 		
+		checkForMatch(card_1, card_2)
+		{
+			this.card_1_type = this.card_1.card_type;
+			this.card_2_type = this.card_2.card_type;
+			
+			if (this.card_1_type === this.card_2_type)
+			{
+				this.card_1.visible = false;
+				this.card_2.visible = false;
+				
+				this.remaining_cards = this.remaining_cards - 2;
+				this.flipped_cards = 0;
+			}
+		}
 		
 	}
 	
@@ -109,10 +138,11 @@ class Card
 		this.flipped = false;
 		this.times_flipped = 0;
 		
-		this.cat_pic = PIXI.Texture.fromImage("Sprites/cat");
+		this.cat_pic = PIXI.Texture.fromImage("bird-100px-copy.png");
 		this.wolf_pic = PIXI.Texture.fromImage("Sprites/wolf");
 		this.tree_pic = PIXI.Texture.fromImage("Sprites/tree");
-		this.pumpkin = PIXI.Texture.fromImage("Sprites/pumpkin");
+		//this.pumpkin = PIXI.Texture.fromImage("Sprites/pumpkin");
+		this.pumpkin = PIXI.Texture.fromImage("beetle.png");
 		
 		this.card_front;
 		this.card_back = new PIXI.Sprite(pumpkin);
@@ -134,19 +164,23 @@ class Card
 			this.card_pic = "tree";
 		}
 		
-		this.matching_container.addChild(this.card_back);
+		this.matching_container.addChild(this.card_front);
 		
 	}
 	
-	flipCard()
+	flipCard(card)
 	{
 		if (this.flipped === false)
 		{
 			// look up visible property for sprites
+			this.flipped = true;
+			this.matching_container.addChild(this.card_front);
 		}
 		else
 		{
-			
+			this.flipped = false;
+			this.matching_container.removeChild(this.card_front);
+			this.matching_container.addChild(this.card_back);
 		}
 	}
 	
