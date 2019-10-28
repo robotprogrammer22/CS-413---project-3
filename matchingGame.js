@@ -95,33 +95,35 @@ class matchingGame
 		this.cards[1].position.x = 200;
 		this.cards[1].position.y = 200;
 		
+	}
+		
+		
+		
 		// need 6 total cards
 		// need to check that 2 of each card exist, so use random to choose between 1-3 to randomly select the card type
 		// if that card type already has 2, then run again
 		// need to place the cards in the proper position here too
 		
-		checkForMatch(card_1, card_2)
-		{
-			this.card_1_type = this.card_1.card_type;
-			this.card_2_type = this.card_2.card_type;
-			
-			if (this.card_1_type === this.card_2_type)
-			{
-				this.card_1.visible = false;
-				this.card_2.visible = false;
-				
-				this.remaining_cards = this.remaining_cards - 2;
-				this.flipped_cards = 0;
-			}
-			else
-			{
-				this.card_1.flipCard();
-				this.card_2.flipCard();
-				
-				this.flipped_cards = 0;
-			}
-		}
+	checkForMatch(card_1, card_2)
+	{
+		this.card_1_type = this.card_1.card_type;
+		this.card_2_type = this.card_2.card_type;
 		
+		if (this.card_1_type === this.card_2_type)
+		{
+			this.card_1.visible = false;
+			this.card_2.visible = false;
+				
+			this.remaining_cards = this.remaining_cards - 2;
+			this.flipped_cards = 0;
+		}
+		else
+		{
+			this.card_1.flipCard();
+			this.card_2.flipCard();
+			
+			this.flipped_cards = 0;
+		}
 	}
 	
 	/*
