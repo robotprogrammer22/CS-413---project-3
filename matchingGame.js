@@ -16,7 +16,7 @@ class matchingGame
 	
 	startGame()
 	{
-		//setBoard();
+		setBoard();
 		/*
 		// do this in the animate loop
 		while (this.remaining_cards > 0)
@@ -37,6 +37,10 @@ class matchingGame
 		if (this.flipped_cards === 2)
 		{
 			checkForMatch();
+		}
+		if (this.remaining_cards === 0)
+		{
+			break;
 		}
 	}
 	
@@ -106,6 +110,13 @@ class matchingGame
 				this.remaining_cards = this.remaining_cards - 2;
 				this.flipped_cards = 0;
 			}
+			else
+			{
+				this.card_1.flipCard();
+				this.card_2.flipCard();
+				
+				this.flipped_cards = 0;
+			}
 		}
 		
 	}
@@ -138,9 +149,10 @@ class Card
 		this.flipped = false;
 		this.times_flipped = 0;
 		
+		//this.cat_pic = PIXI.Texture.fromImage("Sprites/cat.png");
 		this.cat_pic = PIXI.Texture.fromImage("bird-100px-copy.png");
-		this.wolf_pic = PIXI.Texture.fromImage("Sprites/wolf");
-		this.tree_pic = PIXI.Texture.fromImage("Sprites/tree");
+		this.wolf_pic = PIXI.Texture.fromImage("Sprites/wolf.png");
+		this.tree_pic = PIXI.Texture.fromImage("Sprites/tree.png");
 		//this.pumpkin = PIXI.Texture.fromImage("Sprites/pumpkin");
 		this.pumpkin = PIXI.Texture.fromImage("beetle.png");
 		
@@ -168,7 +180,7 @@ class Card
 		
 	}
 	
-	flipCard(card)
+	flipCard()
 	{
 		if (this.flipped === false)
 		{
