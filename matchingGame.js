@@ -9,7 +9,7 @@ class matchingGame
 		this.game_finished = false;
 		this.score = 5;
 		
-		this.cards = [];
+		this.card_list = [];
 		this.flipped_cards = 0;
 		this.remaining_cards = 6;
 	}
@@ -60,9 +60,10 @@ class matchingGame
 				if (this.cards[0] < 2)
 				{
 					this.new_card = new Card("cat");
-					this.cards.push(this.new_card);
+					this.cards_list.push(this.new_card);
 					this.card_type_numbers[0] += 1;
 					this.matching_container.addChild(this.card_front);
+					this.cards++;
 				}
 			}
 			else if (this.random_card === 2)
@@ -71,9 +72,10 @@ class matchingGame
 				if (this.cards[1] < 2)
 				{
 					this.new_card = new Card("wolf");
-					this.cards.push(this.new_card);
+					this.cards_list.push(this.new_card);
 					this.card_type_numbers[1] += 1;
 					this.matching_container.addChild(this.card_front);
+					this.cards++;
 				}
 			}
 			else (this.random_card === 3)
@@ -82,18 +84,19 @@ class matchingGame
 				if (this.cards[2] < 2)
 				{
 					this.new_card = new Card("tree");
-					this.cards.push(this.new_card);
+					this.cards_list.push(this.new_card);
 					this.card_type_numbers[2] += 1;
 					this.matching_container.addChild(this.card_front);
+					this.cards++;
 				}
 			}
 		}
 		
-		this.cards[0].position.x = 20;
-		this.cards[0].position.y = 20;
+		this.cards_list[0].position.x = 20;
+		this.cards_list[0].position.y = 20;
 		
-		this.cards[1].position.x = 200;
-		this.cards[1].position.y = 200;
+		this.cards_list[1].position.x = 200;
+		this.cards_list[1].position.y = 200;
 		
 	}
 		
