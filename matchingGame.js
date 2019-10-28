@@ -62,6 +62,7 @@ class matchingGame
 					this.new_card = new Card("cat");
 					this.cards.push(this.new_card);
 					this.card_type_numbers[0] += 1;
+					this.matching_container.addChild(this.card_front);
 				}
 			}
 			else if (this.random_card === 2)
@@ -72,6 +73,7 @@ class matchingGame
 					this.new_card = new Card("wolf");
 					this.cards.push(this.new_card);
 					this.card_type_numbers[1] += 1;
+					this.matching_container.addChild(this.card_front);
 				}
 			}
 			else (this.random_card === 3)
@@ -82,6 +84,7 @@ class matchingGame
 					this.new_card = new Card("tree");
 					this.cards.push(this.new_card);
 					this.card_type_numbers[2] += 1;
+					this.matching_container.addChild(this.card_front);
 				}
 			}
 		}
@@ -174,10 +177,7 @@ class Card
 		{
 			this.card_front = new PIXI.Sprite(tree_pic);
 			this.card_pic = "tree";
-		}
-		
-		this.matching_container.addChild(this.card_front);
-		
+		}		
 	}
 	
 	flipCard()
